@@ -1,0 +1,7 @@
+App\Entity\Artist:
+    artist{1..10}:
+        name: <name()>
+        biography: <sentence()>
+        picture: "https://picsum.photos/400/550?random=<numberBetween(1, 100)>"
+        birthDate: <dateTimeBetween('-75 years', '-20 years')>
+        createdAt: <dateTimeBetween('-1 years', 'now')>

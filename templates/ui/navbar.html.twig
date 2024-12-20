@@ -1,0 +1,41 @@
+<nav class="bg-neutral-800 p-4 mb-12">
+	<div class="max-w-7xl mx-auto flex justify-between items-center">
+		<div class="flex items-center space-x-4 justify-between w-full">
+			<a href={{path("app_home")}} class="text-white text-2xl font-semibold">MusicOnly</a>
+			<div class="hidden md:flex space-x-6">
+				<a href={{path("app_home")}} class="text-white">Accueil</a>
+				<a href={{path("app_home")}} class="text-white">Albums</a>
+
+				{% if is_granted('ROLE_ADMIN') %}
+					<a href={{path("app_admin")}} class="text-white">Admin</a>
+				{% endif %}
+
+				{% if app.user %}
+					<div class="mb-4 text-center">
+						<span class="font-semibold text-white">{{ app.user.username }}</span>
+					</div>
+					<a href={{path("app_logout")}} class="text-white">Se déconnecter</a>
+
+				{% else %}
+					<a href={{path("app_login")}} class="text-white">Se connecter</a>
+				{% endif %}
+
+
+			</div>
+		</div>
+
+		<div class="md:hidden flex items-center">
+			<button id="menuToggle" class="text-white focus:outline-none">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+				</svg>
+			</button>
+		</div>
+	</div>
+
+	<div id="menu" class="md:hidden hidden mt-4 space-y-4 text-center">
+		<a href={{path("app_home")}} class="block text-white">Accueil</a>
+		<a href={{path("app_home")}} class="block text-white">Albums</a>
+		<a href={{path("app_home")}} class="block text-white">Services</a>
+	</div>
+</nav>

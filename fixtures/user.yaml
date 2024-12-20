@@ -1,0 +1,15 @@
+App\Entity\User:
+    user_template (template):
+        email: "<email()>"
+        username: "<userName()>"
+        plainPassword: "password_<current()>"
+        roles: [ROLE_USER]
+
+    user_admin (extends user_template):
+        email: "adrien.quacchia@gmail.com"
+        username: "adrienqua"
+        plainPassword: "adrien1234"
+        roles: [ROLE_ADMIN]
+
+    user_muggle_{1..25} (extends user_template):
+        email: "<email()>"

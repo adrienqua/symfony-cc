@@ -1,0 +1,8 @@
+App\Entity\Album:
+    album{1..100}:
+        title: <sentence()>
+        trackAmount: <numberBetween(2, 20)>
+        coverImage: "https://picsum.photos/400/550?random=<numberBetween(1, 100)>"
+        author: "@artist*"
+        releasedAt: <dateTimeBetween('-1 years', 'now')>
+        createdAt: <dateTimeBetween('-1 years', 'now')>

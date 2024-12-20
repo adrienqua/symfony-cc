@@ -1,0 +1,5 @@
+App\Entity\Comment:
+    comment{1..20}:
+        content: "Playlist <word()>"
+        album: "@album*"
+        createdAt: <dateTimeBetween('-1 years', 'now')>
