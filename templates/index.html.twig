@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	App musique - Accueil
+	MusicOnly - Accueil
 {% endblock %}
 
 {% block body %}
@@ -9,7 +9,7 @@
 		<h1 class="text-4xl font-semibold text-center">Bienvenue sur MusicOnly</h1>
 		<p class="text-center mt-4">Découvrez des musiques de tous genres</p>
 		<div class="text-center mt-8">
-			<a href={{path("admin_album_index")}} class="btn btn-lg bg-green-400 rounded-lg px-4 py-2">Voir les albums</a>
+			<a href={{path("app_albums")}} class="bg-green-400 rounded-lg px-4 py-2">Voir les albums</a>
 		</div>
 	</div>
 {% endblock %}

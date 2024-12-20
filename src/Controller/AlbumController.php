@@ -11,10 +11,21 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('admin/album')]
+
 final class AlbumController extends AbstractController
 {
-    #[Route(name: 'admin_album_index', methods: ['GET'])]
+
+    #[Route('/albums', name: 'app_albums')]
+    public function appIndex(AlbumRepository $albumRepository): Response
+    {
+        $albums = $albumRepository->findAll();
+
+        return $this->render('album/album_list.html.twig', [
+            'albums' => $albums,
+        ]);
+    }
+    
+    #[Route('admin/album', name: 'admin_album_index', methods: ['GET'])]
     public function index(AlbumRepository $albumRepository): Response
     {
         return $this->render('admin/album/index.html.twig', [
@@ -22,7 +33,7 @@ final class AlbumController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'admin_album_new', methods: ['GET', 'POST'])]
+    #[Route('admin/new', name: 'admin_album_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $album = new Album();
@@ -42,7 +53,7 @@ final class AlbumController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'admin_album_show', methods: ['GET'])]
+    #[Route('admin/{id}', name: 'admin_album_show', methods: ['GET'])]
     public function show(Album $album): Response
     {
         return $this->render('admin/album/show.html.twig', [
@@ -50,7 +61,7 @@ final class AlbumController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'admin_album_edit', methods: ['GET', 'POST'])]
+    #[Route('admin/{id}/edit', name: 'admin_album_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Album $album, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(AlbumType::class, $album);
@@ -68,7 +79,7 @@ final class AlbumController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'admin_album_delete', methods: ['POST'])]
+    #[Route('admin/{id}', name: 'admin_album_delete', methods: ['POST'])]
     public function delete(Request $request, Album $album, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$album->getId(), $request->getPayload()->getString('_token'))) {

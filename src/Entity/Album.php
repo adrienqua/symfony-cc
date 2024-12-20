@@ -49,6 +49,9 @@ class Album
     #[ORM\Column]
     private ?int $trackAmount = null;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $description = null;
+
     public function __construct()
     {
         $this->playlists = new ArrayCollection();
@@ -194,6 +197,18 @@ class Album
     public function setTrackAmount(int $trackAmount): static
     {
         $this->trackAmount = $trackAmount;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }

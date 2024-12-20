@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	MusicOnly - Albums
+{% endblock %}
+
+{% block body %}
+	<div class="max-w-7xl mx-auto p-4">
+		<h1 class="text-4xl font-semibold text-center">Albums</h1>
+		<p class="text-center mt-4">Découvrez tous nos albums</p>
+		<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-flow-row gap-4 mt-8">
+			{% for album in albums %}
+				{% include "ui/album_card.html.twig" %}
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

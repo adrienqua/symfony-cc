@@ -2,14 +2,36 @@ App\Entity\User:
     user_template (template):
         email: "<email()>"
         username: "<userName()>"
+        firstname: "<firstName()>"
+        lastname: "<lastName()>"
         plainPassword: "password_<current()>"
         roles: [ROLE_USER]
 
     user_admin (extends user_template):
         email: "adrien.quacchia@gmail.com"
         username: "adrienqua"
+        firstname: "Adrien"
+        lastname: "Quacchia"
         plainPassword: "adrien1234"
         roles: [ROLE_ADMIN]
 
-    user_muggle_{1..25} (extends user_template):
-        email: "<email()>"
+    user_lambda (extends user_template):
+        email: "john.smith@gmail.com"
+        username: "jsmith"
+        firstname: "John"
+        lastname: "Smith"
+        plainPassword: "john1234"
+        roles: [ROLE_USER]
+
+    user_banned (extends user_template):
+        email: "michel.barnier@gmail.com"
+        username: "mbarnier"
+        firstname: "Michel"
+        lastname: "Barnier"
+        plainPassword: "michel1234"
+        roles: [ROLE_BANNED]
+
+    users_muggle_{1..25} (extends user_template):
+
+    users_banned_{1..5} (extends user_template):
+        roles: [ROLE_BANNED]

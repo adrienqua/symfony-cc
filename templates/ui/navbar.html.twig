@@ -4,15 +4,20 @@
 			<a href={{path("app_home")}} class="text-white text-2xl font-semibold">MusicOnly</a>
 			<div class="hidden md:flex space-x-6">
 				<a href={{path("app_home")}} class="text-white">Accueil</a>
-				<a href={{path("app_home")}} class="text-white">Albums</a>
+				<a href={{path("app_albums")}} class="text-white">Albums</a>
 
 				{% if is_granted('ROLE_ADMIN') %}
 					<a href={{path("app_admin")}} class="text-white">Admin</a>
 				{% endif %}
 
+				{% if is_granted('ROLE_USER') %}
+					<a href={{path("app_user_profile")}} class="text-white">Profil</a>
+				{% endif %}
+
 				{% if app.user %}
 					<div class="mb-4 text-center">
-						<span class="font-semibold text-white">{{ app.user.username }}</span>
+						<span class="font-semibold text-white">{{ app.user.firstname }}
+							{{ app.user.lastname }}</span>
 					</div>
 					<a href={{path("app_logout")}} class="text-white">Se déconnecter</a>
 
